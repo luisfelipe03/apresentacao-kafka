@@ -40,3 +40,18 @@ services:
     environment:
       KAFKA_BROKER: kafka:9092
     restart: on-failure
+
+  notification-service:
+    build: ./notification-python
+    container_name: notification-service
+    depends_on:
+      - kafka
+      - order-processor-service
+    environment:
+      KAFKA_BROKER: kafka:9092
+      SMTP_SERVER: smtp.gmail.com
+      SMTP_PORT: 587
+      SMTP_USER: ${SMTP_USER:-seu-email@gmail.com}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-sua-senha}
+      FROM_EMAIL: ${FROM_EMAIL:-seu-email@gmail.com}
+    restart: on-failure
