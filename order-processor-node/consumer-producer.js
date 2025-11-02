@@ -29,7 +29,7 @@ async function run() {
   await consumer.connect();
   await producer.connect();
 
-  console.log('Conectado ao Kafka');
+  console.log('\nConectado ao Kafka');
 
   // Criar os tópicos se não existirem
   const admin = kafka.admin();
@@ -50,7 +50,7 @@ async function run() {
         { topic: 'notifications', numPartitions: 1, replicationFactor: 1 },
       ],
     });
-    console.log('Tópico "notifications" criado');
+    console.log('\nTópico "notifications" criado');
   }
 
   await admin.disconnect();
@@ -58,14 +58,14 @@ async function run() {
   // Subscrever no tópico de pedidos
   await consumer.subscribe({ topic: 'orders', fromBeginning: true });
 
-  console.log('Aguardando mensagens no tópico "orders"...');
+  console.log('\nAguardando mensagens no tópico "orders"...');
 
   // Processar mensagens
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
       const order = JSON.parse(message.value.toString());
 
-      console.log('Processando pedido:', order.id);
+      console.log('\nProcessando pedido:', order.id);
 
       // Simular processamento
       await processOrder(order);

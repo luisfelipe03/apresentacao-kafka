@@ -77,7 +77,7 @@ def main():
 
             # Processamento da mensagem recebida
             notification = msg.value().decode('utf-8')
-            print(f"Notificação recebida: {notification}")
+            print(f"\nNotificação recebida: {notification}")
             # Enviar email de notificação
             send_email_notification("Nova Notificação", notification)
 
