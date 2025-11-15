@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: order-service
+  docker:
+    compose:
+      enabled: false
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+    properties:
+      spring.json.add.type.headers: false
+
+logging:
+  level:
+    org.example: DEBUG
+    org.apache.kafka: INFO

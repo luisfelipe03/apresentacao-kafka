@@ -1,0 +1,129 @@
+type: collection.insomnia.rest/5.0
+name: Kafka projeto
+meta:
+  id: wrk_0679166790f04fd396ee4352aee55919
+  created: 1763171959051
+  modified: 1763173385116
+  description: ""
+collection:
+  - url: "{{ _.api }}/health"
+    name: Verificar serviço
+    meta:
+      id: req_e08b17e9fd454d9f97d2a11c234ad7eb
+      created: 1763171959122
+      modified: 1763173303804
+      isPrivate: false
+      description: ""
+      sortKey: -1763171959122
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.api }}/orders"
+    name: Criar pedido
+    meta:
+      id: req_7e428261b4e64d6f99e5eedcac8874cc
+      created: 1763173146673
+      modified: 1763173275743
+      isPrivate: false
+      description: ""
+      sortKey: -1763173146673
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "customerId": "customer-123",
+          "items": [
+            {
+              "product": "Notebook Dell Inspiron 15",
+              "quantity": 1,
+              "price": 3500.00
+            }
+          ]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.2
+        id: pair_e67c92b9b7d3446cb4652c5bf369a7e2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.api }}/orders"
+    name: Múltiplos pedidos
+    meta:
+      id: req_94f4cbe1091f41d5a69428698a8f67f4
+      created: 1763173325530
+      modified: 1763173347944
+      isPrivate: false
+      description: ""
+      sortKey: -1763172552897.5
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "customerId": "customer-456",
+          "items": [
+            {
+              "product": "iPhone 15 Pro Max",
+              "quantity": 2,
+              "price": 7000.00
+            },
+            {
+              "product": "AirPods Pro 2",
+              "quantity": 2,
+              "price": 2500.00
+            },
+            {
+              "product": "Apple Watch Series 9",
+              "quantity": 1,
+              "price": 4000.00
+            }
+          ]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.2
+        id: pair_e67c92b9b7d3446cb4652c5bf369a7e2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_8f76f9a937e4af610cffa1882f9bacd77f28e314
+    created: 1763171959063
+    modified: 1763171959063
+environments:
+  name: Base Environment
+  meta:
+    id: env_8f76f9a937e4af610cffa1882f9bacd77f28e314
+    created: 1763171959062
+    modified: 1763173287726
+    isPrivate: false
+  data:
+    api: http://localhost:8081/api
+    "": ""
